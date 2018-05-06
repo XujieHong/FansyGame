@@ -231,6 +231,8 @@ public class SlotGamePanelView extends FrameLayout {
 
                                 Message stopMessage = new Message();
                                 stopMessage.what = ROLLING_STOP;
+                                stopMessage.arg1 = preIndex;
+                                stopMessage.arg2 = currentIndex;
                                 mHandler.sendMessageDelayed(stopMessage, 200);
                             }
                         }
@@ -447,7 +449,7 @@ public class SlotGamePanelView extends FrameLayout {
         VCard card = new VCard();
         try {
             card.setFirstName("" + mCoins);
-            if(connection.isConnected()){
+            if(connection != null && connection.isConnected()){
                 VCardManager.getInstanceFor(connection).saveVCard(card);
             }else{
                 ToastUtils.showShortToast("网络已断开！");
@@ -455,7 +457,8 @@ public class SlotGamePanelView extends FrameLayout {
             }
         }
         catch(Exception e) {
-            mCoins = 0;
+            ToastUtils.showShortToast("网络已断开！");
+            mActivity.finish();
         }
         /*
         new Thread(new Runnable() {
@@ -490,7 +493,7 @@ public class SlotGamePanelView extends FrameLayout {
     private void syncConisFromServer(){
         XMPPTCPConnection connection = IMApplication.connection;
         try {
-            if(connection.isConnected()){
+            if(connection != null && connection.isConnected()){
                 VCard card = VCardManager.getInstanceFor(connection).loadVCard();
                 String firstname = card.getFirstName();
                 if(firstname != null && !firstname.isEmpty() && !firstname.equals("")){
@@ -507,7 +510,8 @@ public class SlotGamePanelView extends FrameLayout {
 
         }
         catch(Exception e) {
-            mCoins = 0;
+            ToastUtils.showShortToast("网络已断开！");
+            mActivity.finish();
         }
 
         TextView tv = findViewById(R.id.coins);
@@ -550,6 +554,7 @@ public class SlotGamePanelView extends FrameLayout {
             case ROLLING_STOP:
                 isIvFocusedArr[stayIndex] = true;
                 endRolling();
+                setFocus(arg1, stayIndex);
                 if(remainRollingTimes > 0){
                     if(startGame(false)){
                         tryToStop();

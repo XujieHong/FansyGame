@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -66,6 +67,14 @@ public class GameHomeActivity extends Activity implements View.OnClickListener {
             default:
                 break;
         }
+    }
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            View view = findViewById(R.id.game_home);
+            showPopView(view);
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     public void onLogout(View view){

@@ -7,6 +7,7 @@ import android.os.Message;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -126,6 +127,14 @@ public class SlotGameActivity extends AppCompatActivity {
         delayedHide(100);
     }
 
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            View view = findViewById(R.id.game_panel);
+            showPopView(view);
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
     private void toggle() {
         if (mVisible) {
             hide();
@@ -171,7 +180,7 @@ public class SlotGameActivity extends AppCompatActivity {
     public void startGame(View view){
         if (!mGamePanelView.isGameRunning()) {
             if(mGamePanelView.startGame(true)) {
-                mGamePanelView.tryToStop(21);
+                mGamePanelView.tryToStop();
             }
         }
     }
