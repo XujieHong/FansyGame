@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">FansyGame</string>
+    <string name="app_version">Version 1.0</string>
+    <string name="app_auther">Ken Hong</string>
+
+    <!--Slot Game-->
+    <string name="start_button">START</string>
+    <string name="quit_button">QUIT</string>
+    <string name="Luck_content">777\n幸运大转盘</string>
+    <string name="coins">Coins:</string>
+
+</resources>
