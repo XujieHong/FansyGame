@@ -6,15 +6,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.TextView;
 
 import com.fansy.smz.fansygame.R;
-import com.fansy.smz.fansygame.login.view.CustomPopWindow;
 
 /**
  * Slot Game activity
@@ -115,6 +110,7 @@ public class SlotGameActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         mGamePanelView.release();
+        // KenHong todo, to avoid window leak
     }
 
     @Override
@@ -125,14 +121,6 @@ public class SlotGameActivity extends AppCompatActivity {
         // created, to briefly hint to the user that UI controls
         // are available.
         delayedHide(100);
-    }
-
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode == KeyEvent.KEYCODE_BACK){
-            View view = findViewById(R.id.game_panel);
-            showPopView(view);
-        }
-        return super.onKeyDown(keyCode, event);
     }
 
     private void toggle() {
@@ -161,7 +149,6 @@ public class SlotGameActivity extends AppCompatActivity {
         mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
         mVisible = true;
-
         // Schedule a runnable to display UI elements after a delay
         mHideHandler.removeCallbacks(mHidePart2Runnable);
     }
@@ -175,8 +162,6 @@ public class SlotGameActivity extends AppCompatActivity {
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
 
-
-
     public void startGame(View view){
         if (!mGamePanelView.isGameRunning()) {
             if(mGamePanelView.startGame(true)) {
@@ -186,7 +171,7 @@ public class SlotGameActivity extends AppCompatActivity {
     }
 
     public void quitGame(View view){
-        showPopView(view);
+        finish();
     }
 
     public void betOn(View view){
@@ -201,33 +186,4 @@ public class SlotGameActivity extends AppCompatActivity {
             mGamePanelView.processMessage(msg.what, msg.arg1, msg.arg2);
         }
     };
-
-    private void showPopView(View exit) {
-        View popview = LayoutInflater.from(this).inflate(R.layout.pop_exit, null);
-
-        CustomPopWindow popWindow = new CustomPopWindow.PopupWindowBuilder(this)
-                .setView(popview)
-                .setAnimationStyle(android.R.style.Animation_InputMethod)
-                .create()
-                .showAtLocation(exit, Gravity.BOTTOM, 0, 0);
-        initPop(popWindow, popview);
-
-    }
-
-    public void initPop(final CustomPopWindow popWindow, View popview) {
-        TextView exit = popview.findViewById(R.id.exit);
-        TextView cancel = popview.findViewById(R.id.cancel);
-        exit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                finish();
-            }
-        });
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                popWindow.dissmiss();
-            }
-        });
-    }
 }

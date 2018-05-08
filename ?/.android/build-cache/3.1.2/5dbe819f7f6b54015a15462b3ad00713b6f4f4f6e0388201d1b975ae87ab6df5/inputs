@@ -1,0 +1,10 @@
+COMMAND=PREDEX_LIBRARY_TO_DEX_ARCHIVE
+FILE.path=/home/hongxujie/.gradle/caches/modules-2/files-2.1/org.igniterealtime.smack/smack-tcp/4.1.9/943bff83276a63e552cd764e3d6f6c8b899d3c7a/smack-tcp-4.1.9.jar
+FILE.hash=69343b52816522aa491b743a0e620b06feb7245a174c7d0cce669586fa3995b3
+DX_VERSION=1.16
+JUMBO_MODE=true
+OPTIMIZE=true
+DEXER_TOOL=D8
+CACHE_KEY_VERSION=4
+MIN_SDK_VERSION=21
+IS_DEBUGGABLE=false

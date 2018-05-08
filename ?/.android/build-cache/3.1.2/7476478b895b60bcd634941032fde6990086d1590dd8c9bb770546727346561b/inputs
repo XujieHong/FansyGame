@@ -1,0 +1,10 @@
+COMMAND=PREDEX_LIBRARY_TO_DEX_ARCHIVE
+FILE.path=/home/hongxujie/.gradle/caches/modules-2/files-2.1/org.igniterealtime.smack/smack-android-extensions/4.1.9/a0a29f02ea27c164d5708bd142136365f7498cb/smack-android-extensions-4.1.9.jar
+FILE.hash=622837f2afeb21c364e42685985f46d52c4b3746ea4108390face7b08303f209
+DX_VERSION=1.16
+JUMBO_MODE=true
+OPTIMIZE=true
+DEXER_TOOL=D8
+CACHE_KEY_VERSION=4
+MIN_SDK_VERSION=21
+IS_DEBUGGABLE=false

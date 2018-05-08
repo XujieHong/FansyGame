@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,7 +12,9 @@ import android.widget.TextView;
 
 import com.fansy.smz.fansygame.R;
 import com.fansy.smz.fansygame.login.IM.SmackUtils;
+import com.fansy.smz.fansygame.login.utils.PreferencesUtils;
 import com.fansy.smz.fansygame.login.view.CustomPopWindow;
+import com.fansy.smz.fansygame.mathgame.MathPkActivity;
 import com.fansy.smz.fansygame.slotgame.SlotGameActivity;
 
 /**
@@ -33,6 +34,11 @@ public class GameHomeActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.game_home_activity_main);
         findView();
         init();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     private void findView() {
@@ -55,26 +61,29 @@ public class GameHomeActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
 
         switch (view.getId()) {
-            case R.id.gameImageView1:
+            case R.id.gameImageView1: {
                 Intent intent = new Intent(mContext, SlotGameActivity.class);
                 mContext.startActivity(intent);
                 break;
+            }
 
-            case R.id.gameImageView2:
+            case R.id.gameImageView2: {
 
+                Intent intent = new Intent(mContext, MathPkActivity.class);
+
+                Bundle bundle = new Bundle();
+                if (true) {
+                    bundle.putInt("isMaster", 1);
+                } else {
+                    bundle.putInt("isMaster", 0);
+                }
+                intent.putExtras(bundle);
+                startActivity(intent);
                 break;
-
+            }
             default:
                 break;
         }
-    }
-
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode == KeyEvent.KEYCODE_BACK){
-            View view = findViewById(R.id.game_home);
-            showPopView(view);
-        }
-        return super.onKeyDown(keyCode, event);
     }
 
     public void onLogout(View view){
@@ -104,9 +113,10 @@ public class GameHomeActivity extends Activity implements View.OnClickListener {
                  * Disconnect
                  */
                 SmackUtils.getInstance().exitConnect();
-                //Intent intent = new Intent(mContext, LoginActivity.class);
-                //mContext.startActivity(intent);
+                PreferencesUtils.getInstance().putString("pwd", "");
+
                 finish();
+                popWindow.dissmiss();
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {

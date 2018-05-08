@@ -1,5 +1,6 @@
 package com.fansy.smz.fansygame.login.IM;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -88,6 +89,7 @@ public class LoginAsyncTask extends AsyncTask<String, String, Boolean> {
         if (bool) {
             Intent intent = new Intent(mContext, GameHomeActivity.class);
             mContext.startActivity(intent);
+            ((Activity)mContext).finish();
         } else {
             ToastUtils.showShortToast("请检查用户名和密码是否正确/网络是否可用");
         }

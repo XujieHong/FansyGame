@@ -1,0 +1,5 @@
+COMMAND=GENERATE_MOCKABLE_JAR
+fileName=mockable-android-27.v3.jar
+platformJar.path=/home/hongxujie/adt-bundle-linux-x86_64-20140321/sdk/platforms/android-27/android.jar
+platformJar.size=29529754
+platformJar.timestamp=1509584814000

@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        androiddebugkey {
+            keyAlias 'android.keystore'
+            keyPassword 'hatehxj1'
+            storeFile file('/home/hongxujie/keystore/android.keystore')
+            storePassword 'hatehxj1'
+        }
+    }
     compileSdkVersion 27
     defaultConfig {
         minSdkVersion 21
@@ -20,6 +28,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            signingConfig signingConfigs.androiddebugkey
+        }
     }
     buildToolsVersion '27.0.3'
 }
@@ -27,11 +38,16 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation files('libs/BaiduLBS_Android.jar')
     implementation 'org.igniterealtime.smack:smack-tcp:4.1.9'
     implementation 'org.igniterealtime.smack:smack-android-extensions:4.1.9'
-    implementation 'com.android.support:appcompat-v7:27.1.0'
-    implementation 'com.android.support:design:27.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+}
+
+configurations {
+    all {
+        exclude group: 'xpp3', module: 'xpp3'
+    }
 }

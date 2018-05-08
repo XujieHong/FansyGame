@@ -45,6 +45,7 @@
         </activity>
         <activity android:name=".login.GameHomeActivity" />
         <activity android:name=".slotgame.SlotGameActivity" />
+        <activity android:name=".mathgame.MathPkActivity" />
     </application>
 
 </manifest>

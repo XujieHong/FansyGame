@@ -1,0 +1,10 @@
+COMMAND=PREDEX_LIBRARY_TO_DEX_ARCHIVE
+FILE.path=/home/hongxujie/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/0219a23fa3e28262566380bf432ff680/jars/classes.jar
+FILE.hash=14b1fe42ac30132921fefef7612bc5ac3796b8c67f63b0b8f7ed2692a9d4fdba
+DX_VERSION=1.16
+JUMBO_MODE=true
+OPTIMIZE=true
+DEXER_TOOL=D8
+CACHE_KEY_VERSION=4
+MIN_SDK_VERSION=21
+IS_DEBUGGABLE=false

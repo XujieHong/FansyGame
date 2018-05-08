@@ -44,22 +44,23 @@ public class LoginActivity extends Activity {
         mContext = this;
         findView();
         init();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
         String username = PreferencesUtils.getInstance().getString("username");
         String pwd = PreferencesUtils.getInstance().getString("pwd");
-        //String username = "";
-        //String pwd = "";
+
         if (!TextUtils.isEmpty(username)) {
             account.setText(username);
         }
         if (!TextUtils.isEmpty(pwd)) {
             password.setText(pwd);
         }
+        if(!TextUtils.isEmpty(username) && !TextUtils.isEmpty(pwd)){
+            doLogin();
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 
     @Override

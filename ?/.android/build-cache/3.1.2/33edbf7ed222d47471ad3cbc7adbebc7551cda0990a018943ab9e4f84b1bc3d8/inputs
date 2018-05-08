@@ -1,0 +1,10 @@
+COMMAND=PREDEX_LIBRARY_TO_DEX_ARCHIVE
+FILE.path=/home/hongxujie/.gradle/caches/modules-2/files-2.1/org.igniterealtime.smack/smack-sasl-provided/4.1.9/ba559437da8e6171a8f61e4ae0d1656424d904db/smack-sasl-provided-4.1.9.jar
+FILE.hash=1e510b91c6eb76c977bbc1b41fe4186f7c39a90b57275ae33b26594646f74ebe
+DX_VERSION=1.16
+JUMBO_MODE=true
+OPTIMIZE=true
+DEXER_TOOL=D8
+CACHE_KEY_VERSION=4
+MIN_SDK_VERSION=21
+IS_DEBUGGABLE=false
