@@ -10,7 +10,7 @@ import com.fansy.smz.fansygame.R;
 
 /**
  * Loading UI
- *
+ * CustomLoadingDialog
  * @author Ken Hong
  */
 

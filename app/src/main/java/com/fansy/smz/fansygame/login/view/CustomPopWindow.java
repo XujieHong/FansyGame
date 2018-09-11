@@ -12,8 +12,9 @@ import android.widget.PopupWindow;
 
 /**
  * 自定义PopWindow
- * 封装PopWindow的常用属性，用Builder模式支持链式调用
+ * 封装PopWindow的常用属性，用Builder的模式支持链式调用
  */
+
 
 public class CustomPopWindow {
 
